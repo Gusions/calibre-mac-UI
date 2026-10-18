@@ -68,6 +68,7 @@ struct SidebarView: View {
                     .pickerStyle(.segmented).labelsHidden().frame(width: 62).help("Più voci: tutte (E) o almeno una (O)")
             }
             .padding(.horizontal, 12).padding(.vertical, 8)
+            .background(.bar)
             .overlay(alignment: .top) { Divider() }
         }
         .alert("Rinomina “\(renaming?.value ?? "")”", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {

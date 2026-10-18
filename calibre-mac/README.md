@@ -14,9 +14,9 @@ SwiftUI nativo · Liquid Glass · tema chiaro/scuro di sistema · stesso motore 
 ![Stato](https://img.shields.io/badge/stato-0.3%20in%20sviluppo-orange)
 ![Licenza](https://img.shields.io/badge/licenza-GPLv3-blue)
 
-<img src="docs/hero.png" alt="Calibre Mac: elenco, Quickview e dettagli">
+<img src="docs/app-grid-dark.png" alt="Calibre Mac: griglia di copertine, tema scuro">
 
-<sub>Design di riferimento (prototipo HTML interattivo in <code>prototype/</code>). L'app SwiftUI ne segue il layout; gli screenshot dell'app vera arriveranno.</sub>
+<sub>Screenshot dell'app reale: griglia di copertine, tema scuro, sidebar con tag browser.</sub>
 
 </div>
 
@@ -32,7 +32,9 @@ Calibre è il miglior gestore di e-book che esista, ma la sua interfaccia è Qt:
 - 🔌 **Invio all'e-reader** con un clic: Kindle, Kobo e volumi rimovibili, con conversione automatica.
 - 🪶 **Leggera**: DMG da circa 2 MB, universale Apple Silicon + Intel.
 
-## Galleria
+## Design di riferimento
+
+Le immagini qui sotto vengono dal **prototipo HTML interattivo** (`prototype/index.html`) che ha guidato il design. Mostrano le funzioni previste (lettore, metadati, tag browser, ricerca nel testo), ma l'aspetto dell'app SwiftUI reale può differire nei dettagli.
 
 <table>
 <tr>
