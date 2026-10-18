@@ -4,218 +4,203 @@
 
 # Calibre Mac
 
-**La tua libreria Calibre, finalmente con un'interfaccia da Mac.**
+**Your Calibre library, finally with a Mac interface.**
 
-SwiftUI nativo · Liquid Glass · tema chiaro/scuro di sistema · stesso motore di Calibre
+Native SwiftUI · Liquid Glass · system light/dark theme · the same engine as Calibre
 
 ![macOS](https://img.shields.io/badge/macOS-26%2B-black?logo=apple)
-![SwiftUI](https://img.shields.io/badge/SwiftUI-nativo-0A84FF?logo=swift&logoColor=white)
-![Motore](https://img.shields.io/badge/motore-Calibre%208-9A3B34)
-![Stato](https://img.shields.io/badge/stato-0.3%20in%20sviluppo-orange)
-![Licenza](https://img.shields.io/badge/licenza-GPLv3-blue)
+![SwiftUI](https://img.shields.io/badge/SwiftUI-native-0A84FF?logo=swift&logoColor=white)
+![Engine](https://img.shields.io/badge/engine-Calibre%208-9A3B34)
+![Status](https://img.shields.io/badge/status-0.3%20in%20development-orange)
+![License](https://img.shields.io/badge/license-GPLv3-blue)
 
-<img src="calibre-mac/docs/app-grid-dark.png" alt="Calibre Mac: griglia di copertine, tema scuro">
+<img src="calibre-mac/docs/app-grid-dark.png" alt="Calibre Mac: cover grid, dark theme">
 
-<sub>Screenshot dell'app reale: griglia di copertine, tema scuro, sidebar con tag browser.</sub>
+<sub>Screenshot of the real app: cover grid, dark theme, sidebar with tag browser.</sub>
 
 </div>
 
 ---
 
-## In breve
+## Overview
 
-Calibre è il miglior gestore di e-book che esista, ma la sua interfaccia è Qt: pesante su Mac e poco "mac". **Calibre Mac cambia solo l'interfaccia.** Conversione, metadati, database e ricerca restano quelli di Calibre, usati come motore in background. La GUI Qt non viene mai avviata.
+Calibre is the best e-book manager out there, but its interface is built with Qt: heavy on a Mac and not very "Mac". **Calibre Mac only replaces the interface.** Conversion, metadata, database and search stay exactly as Calibre does them, with Calibre running in the background as the engine. Calibre's Qt GUI is never launched.
 
-- 🪟 **Nativa**: sidebar, toolbar unificata, Liquid Glass, Quick Look, Condividi, menu e scorciatoie standard.
-- 🌗 **Chiaro e scuro** secondo il sistema, anche nel lettore.
-- 📚 **La tua libreria esistente**, senza importare niente: si apre la cartella di Calibre.
-- 🔌 **Invio all'e-reader** con un clic: Kindle, Kobo e volumi rimovibili, con conversione automatica.
-- 🪶 **Leggera**: DMG da circa 2 MB, universale Apple Silicon + Intel.
+- 🪟 **Native**: sidebar, unified toolbar, Liquid Glass, Quick Look, Share sheet, standard menus and shortcuts.
+- 🌗 **Light and dark** following the system, including the reader.
+- 📚 **Your existing library**, no import step: just open your Calibre folder.
+- 🔌 **One-click send to e-reader**: Kindle, Kobo and removable volumes, with automatic conversion.
+- 🪶 **Lightweight**: about a 2 MB DMG, universal Apple Silicon + Intel.
 
-## Design di riferimento
+> **Note:** the app interface is currently in **Italian**. Localization (English first) is on the [roadmap](#roadmap).
 
-Le immagini qui sotto vengono dal **prototipo HTML interattivo** (`calibre-mac/prototype/index.html`) che ha guidato il design. Mostrano le funzioni previste (lettore, metadati, tag browser, ricerca nel testo), ma l'aspetto dell'app SwiftUI reale può differire nei dettagli.
-
-<table>
-<tr>
-<td width="50%"><img src="calibre-mac/docs/grid-dark.png" alt="Griglia copertine, tema scuro"><br><sub><b>Griglia copertine</b>, tema scuro</sub></td>
-<td width="50%"><img src="calibre-mac/docs/reader.png" alt="Lettore integrato, tema seppia"><br><sub><b>Lettore</b> con indice, segnalibri, temi</sub></td>
-</tr>
-<tr>
-<td><img src="calibre-mac/docs/edit.png" alt="Editor dei metadati"><br><sub><b>Metadati</b>: copertina, identificatori, scarica da fonti online</sub></td>
-<td><img src="calibre-mac/docs/tags.png" alt="Tag browser con filtri"><br><sub><b>Tag browser</b>: selezione multipla E/O e esclusione NON</sub></td>
-</tr>
-<tr>
-<td colspan="2"><img src="calibre-mac/docs/search.png" alt="Ricerca nel testo"><br><sub><b>Ricerca nel testo completo</b> dei libri, con estratti evidenziati</sub></td>
-</tr>
-</table>
-
-## Cosa sa fare
+## Features
 
 <details open>
-<summary><b>Libreria</b></summary>
+<summary><b>Library</b></summary>
 
-- Elenco con **colonne personalizzabili** (clic destro sull'intestazione) e ordinamento, oppure **griglia di copertine** con zoom.
-- **Ricerca** con operatori (`autore:`, `tag:`, `serie:`, `formato:`, `rating:`, `lingua:`…), ricerche salvate e **ricerca nel testo completo** (indice FTS di Calibre).
-- **Tag browser**: autori, serie, tag, editori, formati, valutazioni, lingue. Selezione multipla *tutte / almeno una*, esclusione **NON**, filtro, **rinomina / unisci / rimuovi** una voce su tutti i libri.
-- **Quick Look** con la barra spaziatrice, **segna** i libri, **libro a caso**.
+- List view with **customizable columns** (right-click the header) and sorting, or a **cover grid** with zoom.
+- **Search** with operators (`autore:`, `tag:`, `serie:`, `formato:`, `rating:`, `lingua:`…), saved searches and **full-text search** inside books (Calibre's FTS index).
+- **Tag browser**: authors, series, tags, publishers, formats, ratings, languages. Multi-select with *all / any*, **NOT** exclusion, filtering, and **rename / merge / remove** a value across all books.
+- **Quick Look** with the space bar, **mark** books, **random book**.
 </details>
 
 <details open>
-<summary><b>Libri e metadati</b></summary>
+<summary><b>Books and metadata</b></summary>
 
-- Aggiungi da file, cartelle o **trascinamento**; libro vuoto; rimuovi; **salva su disco**; **Condividi** col menu di sistema.
-- **Modifica metadati** singola o in blocco, con navigazione precedente / successivo.
-- **Cambia copertina** da file o trascinando l'immagine sul pannello dei dettagli.
-- **Scarica metadati** da fonti online e applicali, **incorpora** i metadati nei file.
-- **Valutazione a stelle** direttamente da elenco e dettagli.
+- Add from files, folders or **drag and drop**; empty book; remove; **save to disk**; **Share** through the system menu.
+- **Edit metadata** for one or many books, with previous / next navigation.
+- **Change the cover** from a file or by dropping an image on the details pane.
+- **Download metadata** from online sources and apply it; **embed** metadata into the files.
+- **Star ratings** directly from the list and the details pane.
 </details>
 
 <details open>
-<summary><b>Formati e lettura</b></summary>
+<summary><b>Formats and reading</b></summary>
 
-- **Conversione** tra formati (EPUB, MOBI, AZW3, KEPUB, PDF, DOCX, FB2, TXT, HTMLZ) con profilo dispositivo e **rifinitura** opzionale; avanzamento nei Lavori.
-- **Lettore integrato**: indice (anche per i "Capitolo N" dei TXT), segnalibri, cerca nel libro, carattere, dimensione, tema **automatico / bianco / seppia / scuro**, posizione ricordata. I PDF si aprono con PDFKit.
-- **Scarica notizie** con le ricette integrate di Calibre.
+- **Conversion** between formats (EPUB, MOBI, AZW3, KEPUB, PDF, DOCX, FB2, TXT, HTMLZ) with device profile and optional **polish**; progress is shown in Jobs.
+- **Built-in reader**: table of contents (including "Capitolo N" headings in plain text books), bookmarks, in-book search, font, size, **automatic / white / sepia / dark** theme, remembered position. PDFs open with PDFKit.
+- **Fetch news** using Calibre's built-in recipes.
 </details>
 
 <details open>
-<summary><b>Invio all'e-reader</b></summary>
+<summary><b>Send to e-reader</b></summary>
 
-Collega il lettore via USB, seleziona i libri e usa **Invia a e-reader…** (`⇧⌘D`, pulsante in toolbar o menu contestuale).
+Plug the reader in over USB, select the books and use **Invia a e-reader…** (`⇧⌘D`, toolbar button or context menu).
 
-| Dispositivo | Come lo riconosce | Cartella | Formati preferiti |
+| Device | How it is detected | Folder | Preferred formats |
 |---|---|---|---|
-| **Kindle** | volume "Kindle", oppure cartelle `documents` + `system` | `documents/` | AZW3, MOBI, PDF, TXT |
-| **Kobo** | cartella `.kobo` nella radice | radice | KEPUB, EPUB, PDF |
-| **Altri e-reader USB** | volume rimovibile | `Books/` se esiste, sennò radice | EPUB, PDF, MOBI, AZW3 |
+| **Kindle** | volume named "Kindle", or `documents` + `system` folders | `documents/` | AZW3, MOBI, PDF, TXT |
+| **Kobo** | `.kobo` folder at the volume root | volume root | KEPUB, EPUB, PDF |
+| **Other USB e-readers** | removable volume | `Books/` if present, otherwise the root | EPUB, PDF, MOBI, AZW3 |
 
-Se il libro non ha un formato compatibile viene **convertito al volo** (AZW3 per Kindle, EPUB per gli altri, con il profilo giusto). Puoi cambiare la cartella e scegliere se **espellere** il volume al termine.
+If a book has no compatible format it is **converted on the fly** (AZW3 for Kindle, EPUB for the others, with the right profile). You can change the destination folder and choose whether to **eject** the volume when done.
 </details>
 
-## Come funziona
+## How it works
 
 ```
-┌─────────────────────────┐   letture: HTTP /ajax    ┌──────────────────────┐
+┌─────────────────────────┐   reads: HTTP /ajax      ┌──────────────────────┐
 │  Calibre Mac (SwiftUI)  │ ───────────────────────▶ │   calibre-server     │
-│                         │                          │   processo figlio,   │
-│  sidebar · elenco ·     │   scritture: calibredb   │   solo localhost     │
-│  griglia · lettore      │ ───────────────────────▶ └──────────┬───────────┘
+│                         │                          │   child process,     │
+│  sidebar · list ·       │   writes: calibredb      │   localhost only     │
+│  grid · reader          │ ───────────────────────▶ └──────────┬───────────┘
 │                         │                                     │
 │                         │   ebook-convert · ebook-polish      ▼
-│                         │ ───────────────────────▶   libreria Calibre
+│                         │ ───────────────────────▶   Calibre library
 └─────────────────────────┘                             (metadata.db)
 ```
 
-- **Si legge dal server, si scrive con `calibredb`** collegato al server: l'app non apre mai il database direttamente.
-- Il server parte su una **porta locale libera**, ascolta solo su `127.0.0.1` e **si chiude con l'app**, anche dopo un crash. All'avvio elimina eventuali server rimasti da esecuzioni precedenti.
-- Serve **Calibre installato**: viene usato solo come motore.
+- **Reads go through the server, writes through `calibredb`** connected to that server: the app never opens the database directly.
+- The server starts on a **free local port**, listens only on `127.0.0.1`, and **quits with the app**, even after a crash. At launch it also removes any server left over from a previous run.
+- **Calibre must be installed**: it is used only as the engine.
 
-## Provala
+## Try it
 
-**Requisiti:** macOS 26 o successivo (Apple Silicon o Intel) e [Calibre](https://calibre-ebook.com/download_osx) in `/Applications`.
+**Requirements:** macOS 26 or later (Apple Silicon or Intel) and [Calibre](https://calibre-ebook.com/download_osx) in `/Applications`.
 
 ```bash
 cd calibre-mac
-./make-dmg.sh              # build universale + installer in build/Calibre Mac.dmg
+./make-dmg.sh              # universal build + installer at build/Calibre Mac.dmg
 ```
 
-1. Apri il DMG e trascina **Calibre Mac** in Applicazioni.
-2. Al primo avvio clic destro ▸ **Apri** (l'app non è ancora notarizzata).
-3. Scegli la cartella della tua libreria con *File ▸ Apri libreria…* (`⇧⌘O`).
+1. Open the DMG and drag **Calibre Mac** into Applications.
+2. On first launch, right-click ▸ **Open** (the app is not notarized yet).
+3. Pick your library folder with *File ▸ Apri libreria…* (`⇧⌘O`).
 
-> ⚠️ **Non usare Calibre Mac e il Calibre originale sulla stessa libreria nello stesso momento.** Calibre lo sconsiglia per evitare conflitti sul database: chiudi uno dei due.
+> ⚠️ **Do not use Calibre Mac and the original Calibre on the same library at the same time.** Calibre advises against it to avoid database conflicts: close one of the two.
 
-Per provare senza toccare la tua libreria:
+To try it without touching your own library:
 
 ```bash
-python3 dev/seed.py        # crea dev/TestLibrary con 13 libri di prova
+python3 dev/seed.py        # creates dev/TestLibrary with 13 sample books
 open -n --env CALIBREMAC_LIBRARY="$PWD/dev/TestLibrary" "build/Calibre Mac.app"
 ```
 
-Basta lo strumento da riga di comando di Apple (**Xcode Command Line Tools**): non serve Xcode.
+You only need Apple's command line tools (**Xcode Command Line Tools**): full Xcode is not required.
 
 <details>
-<summary><b>Scorciatoie da tastiera</b></summary>
+<summary><b>Keyboard shortcuts</b></summary>
 
-| Azione | Tasti |
+| Action | Keys |
 |---|---|
-| Aggiungi libri · Apri libreria | `⌘O` · `⇧⌘O` |
-| Modifica metadati · Converti | `⌘E` · `⇧⌘K` |
-| Leggi · Anteprima | `⌘↩` · `spazio` / `⌘Y` |
-| Invia a e-reader | `⇧⌘D` |
-| Segna · Mostra nel Finder · Libro a caso | `⌘M` · `⇧⌘R` · `⌥⌘R` |
-| Rimuovi | `⌘⌫` |
-| Elenco · Griglia · Dettagli | `⌘1` · `⌘2` · `⌥⌘I` |
+| Add books · Open library | `⌘O` · `⇧⌘O` |
+| Edit metadata · Convert | `⌘E` · `⇧⌘K` |
+| Read · Quick Look | `⌘↩` · `space` / `⌘Y` |
+| Send to e-reader | `⇧⌘D` |
+| Mark · Reveal in Finder · Random book | `⌘M` · `⇧⌘R` · `⌥⌘R` |
+| Remove | `⌘⌫` |
+| List · Grid · Details | `⌘1` · `⌘2` · `⌥⌘I` |
 </details>
 
 ## Roadmap
 
-- [x] Libreria, ricerca, tag browser, metadati, conversione, lettore, invio all'e-reader
-- [ ] **Colonne personalizzate** di Calibre: tabella, sidebar, ricerca `#colonna:` e modifica per tipo
-- [ ] **Librerie virtuali** vere e cambio libreria rapido
-- [ ] **Duplicati**, controllo e ripristino libreria, cestino
-- [ ] Invio via **email** (Kindle), **MTP** e wireless
-- [ ] Editor del libro, modifica indice, catalogo, plugin, server contenuti, lettura vocale
-- [ ] **Firma e notarizzazione** del DMG
+- [x] Library, search, tag browser, metadata, conversion, reader, send to e-reader
+- [ ] **Custom columns** from Calibre: table, sidebar, `#column:` search and per-type editing
+- [ ] Real **virtual libraries** and quick library switching
+- [ ] **Duplicates**, library check and restore, trash
+- [ ] Send by **email** (Kindle), **MTP** and wireless
+- [ ] Book editor, ToC editor, catalog, plugins, content server, text to speech
+- [ ] **English localization** of the interface
+- [ ] **Code signing and notarization** of the DMG
 
-## Domande frequenti
+## FAQ
 
 <details>
-<summary><b>Modifica o sposta i miei libri?</b></summary>
-Solo quando glielo chiedi (metadati, conversione, rimozione…), e sempre tramite gli strumenti di Calibre. Non importa né duplica la libreria. Prima di provarla su una libreria importante fai una copia di <code>metadata.db</code>.
+<summary><b>Does it modify or move my books?</b></summary>
+Only when you ask it to (metadata, conversion, removal…), and always through Calibre's own tools. It does not import or duplicate the library. Before trying it on an important library, make a copy of <code>metadata.db</code>.
 </details>
 
 <details>
-<summary><b>Posso usarla insieme al Calibre normale?</b></summary>
-Sì, ma non nello stesso momento sulla stessa libreria. Le librerie sono compatibili al 100%: sono le stesse cartelle.
+<summary><b>Can I use it alongside regular Calibre?</b></summary>
+Yes, but not on the same library at the same time. Libraries are 100% compatible: they are the same folders.
 </details>
 
 <details>
-<summary><b>Perché non Qt?</b></summary>
-Qt è la parte pesante e meno nativa. Qui la GUI è SwiftUI, e Calibre fa solo ciò che sa fare meglio (formati, conversione, metadati).
+<summary><b>Why not Qt?</b></summary>
+Qt is the heavy, less native part. Here the interface is SwiftUI, and Calibre only does what it does best (formats, conversion, metadata).
 </details>
 
 <details>
-<summary><b>Cosa non c'è ancora?</b></summary>
-Vedi la <a href="#roadmap">roadmap</a>. Le priorità sono le colonne personalizzate, le librerie virtuali e il controllo della libreria.
+<summary><b>What is still missing?</b></summary>
+See the <a href="#roadmap">roadmap</a>. Priorities are custom columns, virtual libraries and the library check.
 </details>
 
-## Cosa è stato verificato
+## What has been verified
 
 | | |
 |---|---|
-| ✅ | Compila senza errori, universale arm64 + x86_64 |
-| ✅ | Avvio del server, lettura di una libreria reale, ripristino dopo un crash |
-| ✅ | Rilevamento di Kindle, Kobo e volume generico (volumi simulati), piano di invio e conversione TXT → AZW3 su volume |
-| ✅ | Cambio copertina, identificatori e metadati tramite `calibredb` |
-| ⚠️ | Invio su **un e-reader fisico** non ancora provato |
-| ⚠️ | Nessun **test automatico** dell'interfaccia |
-| ⚠️ | "Scarica metadati" e "Scarica notizie" richiedono internet e dipendono dalle fonti di Calibre |
+| ✅ | Builds without errors, universal arm64 + x86_64 |
+| ✅ | Server startup, reading a real library, recovery after a crash |
+| ✅ | Detection of Kindle, Kobo and a generic volume (simulated volumes), send plan, and TXT → AZW3 conversion onto a volume |
+| ✅ | Cover change, identifiers and metadata through `calibredb` |
+| ⚠️ | Sending to a **physical e-reader** has not been tried yet |
+| ⚠️ | No **automated UI tests** |
+| ⚠️ | "Download metadata" and "Fetch news" need internet and depend on Calibre's sources |
 
-## Struttura
+## Project layout
 
 ```
 calibre-mac/
 ├── Sources/CalibreMac/
 │   ├── App.swift · ContentView.swift · SidebarView.swift
 │   ├── BookViews.swift · InspectorView.swift · Sheets.swift · ReaderView.swift
-│   ├── Engine.swift       server, strumenti, API
-│   ├── Store.swift        stato, filtri, azioni, lavori
-│   ├── Models.swift       Book, categorie, parser delle query
-│   ├── DeviceScan.swift   rilevamento e-reader (logica pura)
-│   └── Devices.swift      monitor dei volumi e foglio di invio
-├── prototype/index.html   prototipo HTML del design
-├── docs/                  immagini del README
-├── tools/make_icon.swift  generatore dell'icona
-├── dev/seed.py            libreria di prova
+│   ├── Engine.swift       server, tools, API
+│   ├── Store.swift        state, filters, actions, jobs
+│   ├── Models.swift       Book, categories, query parser
+│   ├── DeviceScan.swift   e-reader detection (pure logic)
+│   └── Devices.swift      volume monitor and send sheet
+├── prototype/index.html   interactive HTML design prototype (reference only, not the app)
+├── docs/                  README images
+├── tools/make_icon.swift  icon generator
+├── dev/seed.py            sample library
 └── build.sh · make-dmg.sh
 ```
 
-## Licenza e crediti
+## License and credits
 
-[Calibre](https://calibre-ebook.com) è di Kovid Goyal e dei collaboratori, licenza GPLv3. Questo progetto non include il codice di Calibre: lo usa come programma esterno, e segue la stessa licenza GPLv3 del repository. Non è un prodotto ufficiale e non è affiliato a Calibre.
+[Calibre](https://calibre-ebook.com) is by Kovid Goyal and contributors, licensed under GPLv3. This project does not include Calibre's code: it runs Calibre as an external program, and follows the same GPLv3 license as the repository. It is not an official product and is not affiliated with Calibre.
 
 ---
 
-<sub>Questo repository è un fork di [kovidgoyal/calibre](https://github.com/kovidgoyal/calibre). Il progetto vive nella cartella [`calibre-mac/`](calibre-mac); il README originale di Calibre è in [`README.calibre.md`](README.calibre.md).</sub>
+<sub>This repository is a fork of [kovidgoyal/calibre](https://github.com/kovidgoyal/calibre). The project lives in the [`calibre-mac/`](calibre-mac) folder; Calibre's original README is in [`README.calibre.md`](README.calibre.md).</sub>
