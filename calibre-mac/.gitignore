@@ -1,0 +1,8 @@
+build/
+dev/TestLibrary/
+dev/src/
+dev/backup/
+dev/*.log
+*.dmg
+.DS_Store
+.build/
