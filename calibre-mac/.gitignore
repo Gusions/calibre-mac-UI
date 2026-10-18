@@ -5,4 +5,3 @@ dev/backup/
 dev/*.log
 *.dmg
 .DS_Store
-.build/

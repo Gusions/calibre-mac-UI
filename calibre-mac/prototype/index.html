@@ -736,6 +736,19 @@ document.addEventListener('keydown',e=>{
   if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const L=visible();if(!L.length)return;let i=L.findIndex(b=>S.sel.has(b.id));const d=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:-1;i=Math.max(0,Math.min(L.length-1,i<0?0:i+d));S.sel=new Set([L[i].id]);S.last=L[i].id;render();document.querySelector('[data-id].sel,.card.sel')?.scrollIntoView({block:'nearest'})}
 });
 render();
+/* Parametri demo (usati per generare gli screenshot): ?theme=dark&view=grid&sel=9&panel=edit|reader|prefs|qv|fts|tags */
+(function(){try{const q=new URLSearchParams(location.search);
+ if(q.get('theme'))document.documentElement.dataset.theme=q.get('theme');
+ if(q.get('view'))document.querySelector('#viewSeg [data-v='+q.get('view')+']').click();
+ if(q.get('sel')){S.sel=new Set([+q.get('sel')]);render()}
+ const p=q.get('panel');
+ if(p==='edit')openEdit();
+ if(p==='reader'){act('view');if(q.get('rt'))rdSet('theme',q.get('rt'));const g=document.querySelector('#rdPage');g.style.scrollBehavior='auto';g.scrollTop=g.scrollHeight*.18;rdUpdate()}
+ if(p==='prefs')openPrefs();
+ if(p==='qv'){S.qv=true;renderQV()}
+ if(p==='fts'){document.querySelector('#aFts').click();document.querySelector('#q').value='mare';S.q='mare';render()}
+ if(p==='tags'){renderSide.open.tag=1;S.tags=[{k:'tag',v:'Classici'},{k:'tag',v:'Fantastico'},{k:'author',v:'Umberto Eco',neg:true}];render();document.querySelector('.side').scrollTop=260}
+}catch(e){console.error(e)}})();
 </script>
 </body>
 </html>
